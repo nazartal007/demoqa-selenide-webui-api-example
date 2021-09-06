@@ -65,7 +65,7 @@ public class HomePage {
 
     @Step("Кликаем на bookStoreApplication")
     public void clickToBookStoreApplication() {
-        bookStoreApplication.click();
+        bookStoreApplication.hover().click();
     }
 
     @Step("Кликаем на joinNow")
