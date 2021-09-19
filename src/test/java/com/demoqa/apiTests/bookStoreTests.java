@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class bookStore {
+public class bookStoreTests {
 
     @Test()
     @Description("Проверяем что приходит 8 книг")
