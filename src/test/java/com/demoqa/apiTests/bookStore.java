@@ -15,13 +15,14 @@ public class bookStore {
     @Test()
     @Description("Проверяем что приходит 8 книг")
     public void getBooks() {
-        UserBooks userBooks = given()
-                .spec(Specs.request).
+        UserBooks userBooks =
+                given()
+                        .spec(Specs.request).
                 when()
-                .get("/BookStore/v1/Books").
+                        .get("/BookStore/v1/Books").
                 then()
-                .spec(Specs.response200)
-                .extract().as(UserBooks.class);
+                        .spec(Specs.response200)
+                        .extract().as(UserBooks.class);
 
         Assertions.assertEquals(8, userBooks.getBooks().size());
     }
@@ -33,9 +34,9 @@ public class bookStore {
                 given()
                         .spec(Specs.request)
                         .param("ISBN", "9781449325862").
-                        when()
+                when()
                         .get("/BookStore/v1/Book").
-                        then()
+                then()
                         .spec(Specs.response200)
                         .extract().as(Book.class);
 
@@ -50,14 +51,15 @@ public class bookStore {
                 .put("FirstName", "Virender")
                 .put("LastName", "Singh");
 
-        Response response = given()
-                .spec(Specs.request)
-                .header("Content-Type", "application/json")
-                .body(requestParams.toString()).
+        Response response =
+                given()
+                        .spec(Specs.request)
+                        .header("Content-Type", "application/json")
+                        .body(requestParams.toString()).
                 when()
-                .post("Account/v1/User");
+                        .post("Account/v1/User");
 
-        Assertions.assertEquals(response.getStatusCode(), 400);
+        Assertions.assertEquals(400, response.getStatusCode());
         Assertions.assertEquals("UserName and Password required.", response.jsonPath().get("message"));
 
     }
@@ -70,39 +72,17 @@ public class bookStore {
                 .put("userName", "Virender")
                 .put("password", "Singh");
 
-        Response response = given()
-                .spec(Specs.request)
-                .header("Content-Type", "application/json")
-                .body(requestParams.toString()).
+        Response response =
+                given()
+                        .spec(Specs.request)
+                        .header("Content-Type", "application/json")
+                        .body(requestParams.toString()).
                 when()
-                .post("Account/v1/User");
+                        .post("Account/v1/User");
 
-        Assertions.assertEquals(response.getStatusCode(), 400);
+        Assertions.assertEquals(400, response.getStatusCode());
         Assertions.assertEquals("Passwords must have at least one non alphanumeric character," +
                 " one digit ('0'-'9'), one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special" +
                 " character and Password must be eight characters or longer.", response.jsonPath().get("message"));
     }
-
-    @Test()
-    @Description("Проверяем что приходит 8 книг")
-    public void postUserGood() {
-        JSONObject requestParams = new JSONObject();
-        requestParams
-                .put("userName", "Virender")
-                .put("password", "Singh2.");
-
-        Response response = given()
-                .spec(Specs.request)
-                .header("Content-Type", "application/json")
-                .body(requestParams.toString()).
-                when()
-                .post("Account/v1/User");
-
-        Assertions.assertEquals(response.getStatusCode(), 201);
-        Assertions.assertEquals("Passwords must have at least one non alphanumeric character," +
-                " one digit ('0'-'9'), one uppercase ('A'-'Z'), one lowercase ('a'-'z'), one special" +
-                " character and Password must be eight characters or longer.", response.jsonPath().get("message"));
-    }
-
-
 }
