@@ -1,4 +1,4 @@
-package com.demoqa.tests;
+package com.demoqa.uiTests;
 
 import com.demoqa.pages.ElementsPage;
 import io.qameta.allure.Description;

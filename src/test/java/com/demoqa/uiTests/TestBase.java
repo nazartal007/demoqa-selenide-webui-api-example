@@ -1,4 +1,4 @@
-package com.demoqa.tests;
+package com.demoqa.uiTests;
 
 import com.demoqa.config.Project;
 import com.demoqa.helpers.AllureAttachments;
