@@ -91,33 +91,39 @@ public class ElementsPage {
 
     //  Методы для раздела Text Box
     @Step("Переходим в раздел Text Box")
-    public void goToTextBox() {
+    public ElementsPage goToTextBox() {
         open("https://demoqa.com/text-box");
+        return this;
     }
 
     @Step("Заполняем поле full name значением {fullName}")
-    public void fillFullName(String fullName) {
+    public ElementsPage fillFullName(String fullName) {
         userName.setValue(fullName);
+        return this;
     }
 
     @Step("Заполняем поле Email значением {email}")
-    public void fillEmail(String email) {
+    public ElementsPage fillEmail(String email) {
         userEmail.setValue(email);
+        return this;
     }
 
     @Step("Вводим текущий адрес пользователя: {address}")
-    public void fillCurrentAddress(String address) {
+    public ElementsPage fillCurrentAddress(String address) {
         currentAddress.setValue(address);
+        return this;
     }
 
     @Step("Вводим постоянный адрес пользователя: {address}")
-    public void fillPermanentAddress(String address) {
+    public ElementsPage fillPermanentAddress(String address) {
         permanentAddress.setValue(address);
+        return this;
     }
 
     @Step("Подтверждаем все введённые данные")
-    public void submitForm() {
+    public ElementsPage submitForm() {
         submitButton.click();
+        return this;
     }
 
     @Step("Проверяем что принятые данные совпадают с введёнными")

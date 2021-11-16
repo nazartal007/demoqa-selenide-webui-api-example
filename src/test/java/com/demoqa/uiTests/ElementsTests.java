@@ -12,13 +12,13 @@ public class ElementsTests extends TestBase {
     @Test()
     @Description("Заполнение раздела Text Box")
     public void textBoxFill() {
-        elementsPage.goToTextBox();
-        elementsPage.fillFullName(FULL_NAME);
-        elementsPage.fillEmail(EMAIL);
-        elementsPage.fillCurrentAddress(CURRENT_ADDRESS);
-        elementsPage.fillPermanentAddress(PERMANENT_ADDRESS);
-        elementsPage.submitForm();
-        elementsPage.checkCorrectDataSubmitting();
+        elementsPage.goToTextBox()
+                    .fillFullName(FULL_NAME)
+                    .fillEmail(EMAIL)
+                    .fillCurrentAddress(CURRENT_ADDRESS)
+                    .fillPermanentAddress(PERMANENT_ADDRESS)
+                    .submitForm()
+                    .checkCorrectDataSubmitting();
     }
 
     @Test()
